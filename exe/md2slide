@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "md2slide"
+
+Md2slide::CLI.start(ARGV)
