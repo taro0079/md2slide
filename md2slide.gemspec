@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
   spec.add_dependency "thor"
   spec.add_dependency "kramdown"
+  spec.add_dependency "kramdown-parser-gfm"
   spec.add_dependency "rouge"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "listen"

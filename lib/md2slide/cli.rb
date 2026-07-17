@@ -9,6 +9,7 @@ module Md2slide
         <html>
         <head><meta charset="UTF-8">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+          <style> <%= Rouge::Themes::Github.render(scope: '.highlight') %></style>
         </head>
         <body>
           <div class="reveal"><div class="slides">
@@ -25,9 +26,10 @@ module Md2slide
     end
 
     desc "build FILE", "convert markdown to html slide"
+    option :output, aliases: "-o", default: "output.html", desc: "出力先パス"
     def build(file)
       content = File.read(file)
-      doc = Kramdown::Document.new(content)
+      doc = Kramdown::Document.new(content, input: 'GFM', syntax_highlighter: "rouge")
       slides = []
       current = nil
 
@@ -47,7 +49,7 @@ module Md2slide
         html
       end
 
-      File.write("output.html", build_full_html(slides_html))
+      File.write(options[:output], build_full_html(slides_html))
 
 
     end
