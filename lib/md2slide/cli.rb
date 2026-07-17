@@ -50,6 +50,7 @@ module Md2slide
       end
 
       File.write(options[:output], build_full_html(slides_html))
+      puts "Write: #{option[:output]}"
 
 
     end
